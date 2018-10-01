@@ -46,7 +46,7 @@ $container['translator'] = function ($container) {
 $container['view'] = function ($container) {
     $pathView = dirname(__DIR__);
 
-    if (Init::checkCache('CACHE')) {
+    if (\Horyzone\Sim\Init::checkCache('CACHE')) {
         $cache = $pathView.'/app/cache';
     } else {
         $cache = false;
