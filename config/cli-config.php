@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
 $dotenv->load(true);
 
-if (getenv('ENV') == 'local') {
+if (getenv('ENV') == 'dev') {
     $db = "D";
 } elseif (getenv('ENV') == 'prod') {
     $db = "P";

@@ -15,6 +15,6 @@ $app->add(new Middlewares\TokenMiddleware($container->view->getEnvironment(), $c
 $app->add(new Middlewares\CsrfMiddleware($container->view->getEnvironment(), $container));
 $app->add($container->csrf);
 
-if (getenv('ENV') == 'local') {
+if (getenv('ENV') == 'dev') {
     $app->add(new RunTracy\Middlewares\TracyMiddleware($app));
 }
