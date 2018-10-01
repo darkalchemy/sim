@@ -29,7 +29,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Initialisation de Slim en fonction de l'environnement de développement
-if (getenv('ENV') == 'local') {
+if (getenv('ENV') == 'dev') {
     error_reporting(-1);
     ini_set('display_errors', 'On');
     ini_set('display_startup_errors', 'On');
@@ -37,7 +37,7 @@ if (getenv('ENV') == 'local') {
     RunTracy\Helpers\Profiler\Profiler::enable();
 
     RunTracy\Helpers\Profiler\Profiler::start('loadSettings');
-    $c = require __DIR__ . '/../config/tracy.php';
+    $c = require __DIR__ . '/../config/.tracy.php';
     RunTracy\Helpers\Profiler\Profiler::finish('loadSettings');
 
     RunTracy\Helpers\Profiler\Profiler::start('initApp');
@@ -76,7 +76,7 @@ if (getenv('ENV') == 'local') {
     // Appel des middlewares
     require __DIR__ . '/../config/middlewares.php';
 
-    // Le fichier ou l'on déclare les routes
+    // On déclare les routes
     $app = $Router->chargeRouter($app, $Init->getConfigFolder());
 
     require __DIR__ . '/../config/error_pages.php';

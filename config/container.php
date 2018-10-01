@@ -19,7 +19,7 @@ $container['logger'] = function ($container) {
     return $logger;
 };
 
-if (getenv('ENV') == 'local') {
+if (getenv('ENV') == 'dev') {
     $container['twig_profile'] = function () {
         return new Twig_Profiler_Profile();
     };
@@ -46,7 +46,7 @@ $container['translator'] = function ($container) {
 $container['view'] = function ($container) {
     $pathView = dirname(__DIR__);
 
-    if (slim_env('CACHE')) {
+    if (Init::checkCache('CACHE')) {
         $cache = $pathView.'/app/cache';
     } else {
         $cache = false;
@@ -58,7 +58,7 @@ $container['view'] = function ($container) {
 
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
-    if (getenv('ENV') == 'local') {
+    if (getenv('ENV') == 'dev') {
         $view->addExtension(new Twig_Extension_Profiler($container['twig_profile']));
         $view->addExtension(new Twig_Extension_Debug());
     }
@@ -69,7 +69,7 @@ $container['view'] = function ($container) {
 
 // DBAL de doctrine
 $container['dbal'] = function () {
-    if (getenv('ENV') == 'local') {
+    if (getenv('ENV') == 'dev') {
         $db = "D";
     } elseif (getenv('ENV') == 'prod') {
         $db = "P";
@@ -89,7 +89,7 @@ $container['dbal'] = function () {
 
 // EntityManager de doctrine
 $container['em'] = function () {
-    if (getenv('ENV') == 'local') {
+    if (getenv('ENV') == 'dev') {
         $db = "D";
     } elseif (getenv('ENV') == 'prod') {
         $db = "P";
