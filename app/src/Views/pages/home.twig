@@ -1,0 +1,9 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+<h1 id="titleExemple">{{ trans('messages.title') }}</h1>
+<p>{{ trans('messages.greet', {'name': user}) }}</p>
+<div id="logo"></div>
+
+{% endblock %}
