@@ -11,9 +11,9 @@ class CsrfMiddleware
 
     private $csrf;
 
-    public function __construct(\Twig_Environment $twig, $container)
+    public function __construct($container)
     {
-        $this->twig = $twig;
+        $this->twig = $container->view->getEnvironment();
         $this->csrf = $container->csrf;
     }
 
