@@ -39,7 +39,7 @@ if (getenv('ENV') == 'dev') {
     RunTracy\Helpers\Profiler\Profiler::enable();
 
     RunTracy\Helpers\Profiler\Profiler::start('loadSettings');
-    $c = require __DIR__ . '/../config/.tracy.php';
+    $c = require __DIR__ . '/../vendor/horyzone/sim-src/src/config/tracy.php';
     RunTracy\Helpers\Profiler\Profiler::finish('loadSettings');
 
     RunTracy\Helpers\Profiler\Profiler::start('initApp');
