@@ -14,7 +14,7 @@ csrf:
   middleware: App\Middlewares\CsrfMiddleware
   arguments: [container]
 
-csrfCheck:
+csrfChecker:
   arguments: [container.csrf]
 
 tracy:
