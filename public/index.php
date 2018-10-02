@@ -11,7 +11,11 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 // Autoload de composer
-require dirname(__DIR__ ). '/vendor/autoload.php';
+if (file_exists(dirname(__DIR__ ). '/vendor/autoload.php')) {
+    require dirname(__DIR__ ). '/vendor/autoload.php';
+} else {
+    die("Need to install dependencies with composer");
+}
 
 use \Horyzone\Sim\Init;
 use \Horyzone\Sim\Router;
