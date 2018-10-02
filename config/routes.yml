@@ -1,11 +1,12 @@
 home:
-    methode: get
-    path: /
-    controller: App\Controllers\HomeController
-    fonction: getHome
+  methode: get
+  path: /
+  controller: App\Controllers\HomeController
+  fonction: getHome
+  middlewares: [alert]
 
 home_post:
-    methode: post
-    path: /
-    controller: App\Controllers\HomeController
-    fonction: postHome
+  methode: post
+  path: /
+  controller: App\Controllers\HomeController
+  fonction: postHome

@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function getHome(RequestInterface $request, ResponseInterface $response)
     {
-        // Exemple session helper
+        // Example session helper
         if (!$this->session->has('user')) {
             $this->session->set('user', 'John');
         }
@@ -17,20 +17,21 @@ class HomeController extends Controller
         // Passer en langue française (un second rafraichissement est necessaire)
         // $this->session->set('lang', 'fr');
 
-        // Exemple doctrine
+        // Example doctrine
         // $users = $this->em->getRepository('App\Entity\User')->queryGetUsers();
 
-        // Exemple monolog
+        // Example monolog
         $this->logger->addInfo("Bienvenue ".$user);
 
-        // Exemple d'alerte
+        // Example alerte
         if ($this->session->has('lang') && $this->session->get('lang') == "fr") {
             $this->alert(["Ceci est un message d'alerte de test"], 'danger');
         } else {
-            $this->alert(["This is a test alert message"], 'danger');
+            $this->alert(["This is a alert test message"], 'danger');
         }
 
-        $params = compact("user");
+        $title = "Home";
+        $params = compact("user", "title");
         $this->render($response, 'pages/home.twig', $params);
     }
 
@@ -38,10 +39,18 @@ class HomeController extends Controller
     {
         if ($request->getAttribute('csrf_status') !== false) {
             $_SESSION['name'] = $request->getParam('name');
-            $this->alert(['Vous êtes connecté']);
+            if ($this->session->has('lang') && $this->session->get('lang') == "fr") {
+                $this->alert(['Vous êtes connecté']);
+            } else {
+                $this->alert(['You are connected']);
+            }
             return $this->redirect($response, 'home');
         } else {
-            $this->alert(['Formulaire invalide'], "danger");
+            if ($this->session->has('lang') && $this->session->get('lang') == "fr") {
+                $this->alert(['Formulaire invalide'], "danger");
+            } else {
+                $this->alert(['Invalid form'], "danger");
+            }
             return $this->redirect($response, 'home');
         }
     }
