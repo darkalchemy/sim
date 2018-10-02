@@ -36,6 +36,13 @@ class HomeController extends Controller
 
     public function postHome(RequestInterface $request, ResponseInterface $response)
     {
-        return $this->redirect($response, 'home');
+        if ($request->getAttribute('csrf_status') !== false) {
+            $_SESSION['name'] = $request->getParam('name');
+            $this->alert(['Vous êtes connecté']);
+            return $this->redirect($response, 'home');
+        } else {
+            $this->alert(['Formulaire invalide'], "danger");
+            return $this->redirect($response, 'home');
+        }
     }
 }
