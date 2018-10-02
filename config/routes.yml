@@ -4,8 +4,8 @@ home:
     controller: App\Controllers\HomeController
     fonction: getHome
 
-# home_post:
-#     methode: post
-#     path: /
-#     controller: App\Controllers\HomeController
-#     fonction: postHome
+home_post:
+    methode: post
+    path: /
+    controller: App\Controllers\HomeController
+    fonction: postHome

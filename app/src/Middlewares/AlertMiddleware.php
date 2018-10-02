@@ -9,9 +9,9 @@ class AlertMiddleware
     private $twig;
     private $container;
 
-    public function __construct(\Twig_Environment $twig, $container)
+    public function __construct($container)
     {
-        $this->twig = $twig;
+        $this->twig = $container->view->getEnvironment();
         $this->container = $container;
     }
 

@@ -1,0 +1,23 @@
+alert:
+  middleware: App\Middlewares\AlertMiddleware
+  arguments: [container]
+
+old:
+  middleware: App\Middlewares\OldMiddleware
+  arguments: [container]
+
+token:
+  middleware: App\Middlewares\TokenMiddleware
+  arguments: [container]
+
+csrf:
+  middleware: App\Middlewares\CsrfMiddleware
+  arguments: [container]
+
+csrfCheck:
+  arguments: [container.csrf]
+
+tracy:
+  middleware: RunTracy\Middlewares\TracyMiddleware
+  arguments: [app]
+  env: dev

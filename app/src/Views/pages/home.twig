@@ -6,4 +6,9 @@
 <p>{{ trans('messages.greet', {'name': user}) }}</p>
 <div id="logo"></div>
 
+<form action="{{ path_for('home_post')}}" method="post">
+  <input type="submit" class="btn btn-primary" value="Test">
+  {{ csrf() }}
+</form>
+
 {% endblock %}

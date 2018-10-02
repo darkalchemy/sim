@@ -15,9 +15,11 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use \Horyzone\Sim\Init;
 use \Horyzone\Sim\Router;
+use \Horyzone\Sim\Middleware;
 
 $Init = new Init();
 $Router = new Router();
+$Middleware = new Middleware();
 
 // Initialisation du .env
 $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
@@ -51,7 +53,10 @@ if (getenv('ENV') == 'dev') {
 
     // Register middleware
     RunTracy\Helpers\Profiler\Profiler::start('RegisterMiddlewares');
-    require __DIR__ . '/../config/middlewares.php';
+    $app = $Middleware->chargeMiddleware($app, [
+        "app" => $app,
+        "container" => $container
+    ], $Init->getConfigFolder());
     RunTracy\Helpers\Profiler\Profiler::finish('RegisterMiddlewares');
 
     // Register routes
