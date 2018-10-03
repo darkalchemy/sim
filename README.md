@@ -5,7 +5,7 @@
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Horyzone/sim/blob/master/LICENSE)
 # sim
 
-PHP framework based on a custom skeleton `slim` with configuration setting by yaml format and other.
+PHP framework SIM (Simple Intuitive and Modular) based on a custom skeleton `slim` with configuration setting by yaml format and more.
 
 For all contributions on github, please read the document [CONTRIBUTING.md](https://github.com/Horyzone/sim/blob/master/.github/CONTRIBUTING.md).
 
