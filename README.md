@@ -3,7 +3,8 @@
 [![Minimum Node Version](https://img.shields.io/badge/node-%3E%3D%206.11.5-brightgreen.svg)](https://nodejs.org/en/)
 [![Build Status](https://travis-ci.org/Horyzone/sim.svg?branch=master)](https://travis-ci.org/Horyzone/sim)
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Horyzone/sim/blob/master/LICENSE)
-# sim
+
+![](https://miroir.horyzone.fr/upload/logo-sim-transparent-200px.png)
 
 PHP framework SIM (Simple Intuitive and Modular) based on a custom skeleton `slim` with configuration setting by yaml format and more.
 
