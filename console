@@ -7,7 +7,7 @@ use PhpSchool\CliMenu\CliMenu;
 use PhpSchool\CliMenu\Builder\CliMenuBuilder;
 
 if (isset($argv[1])) {
-    $application = new Application('Console', '1.1.4');
+    $application = new Application('Console');
 
     $CacheClearCommand = new \Horyzone\Commands\CacheClear();
     $GenerateController = new \Horyzone\Commands\GenerateController();
