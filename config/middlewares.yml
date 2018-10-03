@@ -5,19 +5,24 @@ alert:
 old:
   middleware: App\Middlewares\OldMiddleware
   arguments: [container]
+  active: always
 
 token:
   middleware: App\Middlewares\TokenMiddleware
   arguments: [container]
+  active: always
 
 csrf:
   middleware: App\Middlewares\CsrfMiddleware
   arguments: [container]
+  active: always
 
 csrfChecker:
   arguments: [container.csrf]
+  active: always
 
 tracy:
   middleware: RunTracy\Middlewares\TracyMiddleware
   arguments: [app]
+  active: always
   env: dev
