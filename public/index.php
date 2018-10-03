@@ -65,7 +65,10 @@ if (getenv('ENV') == 'dev') {
 
     // Register routes
     RunTracy\Helpers\Profiler\Profiler::start('RegisterRoutes');
-    $app = $Router->chargeRouter($app, $Init->getConfigFolder());
+    $app = $Router->chargeRouter($app, [
+        "app" => $app,
+        "container" => $container
+    ], $Init->getConfigFolder());
     RunTracy\Helpers\Profiler\Profiler::finish('RegisterRoutes');
 
     require dirname(__DIR__ ). '/config/error_pages.php';
@@ -76,7 +79,7 @@ if (getenv('ENV') == 'dev') {
     RunTracy\Helpers\Profiler\Profiler::finish('runApp, %s, line %s', basename(__FILE__), __LINE__);
 } else {
     $app = new \Slim\App([
-      'translations_path' => dirname(__DIR__ ). '/config/translations/'
+        'translations_path' => dirname(__DIR__ ). '/config/translations/'
     ]);
 
     // Le container qui compose nos librairies
