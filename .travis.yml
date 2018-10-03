@@ -21,7 +21,7 @@ install:
 
 before_script:
   - chmod -R 770 app/logs && chmod -R 770 app/cache
-  - sh -c "mysql -e 'CREATE DATABASE sim;'"
+  - sh -c "mysql -e 'CREATE DATABASE sim_prod;'"
   - cp .env.travis .env
   - php vendor/bin/doctrine orm:schema-tool:update --force
   - php console data:fixtures
