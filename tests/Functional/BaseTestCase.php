@@ -64,7 +64,8 @@ class BaseTestCase extends TestCase
         $dotenv->load(true);
 
         // Instantiate the application
-        $app = new App();
+        $c = require dirname(__DIR__). '/../vendor/horyzone/sim-src/src/config/tracy.php';
+        $app = new App($c);
 
         // Set up dependencies
         require __DIR__ . '/../../config/container.php';
