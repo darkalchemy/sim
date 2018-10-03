@@ -2,6 +2,9 @@
 
 namespace Tests\Functional;
 
+use \Horyzone\Sim\Init;
+use \Horyzone\Sim\Router;
+use \Horyzone\Sim\Middleware;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -41,6 +44,10 @@ class BaseTestCase extends TestCase
             ]
         );
 
+        $Init = new Init();
+        $Router = new Router();
+        $Middleware = new Middleware();
+
         // Set up a request object based on the environment
         $request = Request::createFromEnvironment($environment);
 
@@ -65,11 +72,17 @@ class BaseTestCase extends TestCase
         // Register middleware
         if ($this->withMiddleware) {
             $_SESSION = [];
-            require __DIR__ . '/../../config/middlewares.php';
+            $app = $Middleware->chargeMiddleware($app, [
+                "app" => $app,
+                "container" => $container
+            ], $Init->getConfigFolder());
         }
 
         // Register routes
-        require __DIR__ . '/../../config/routes.php';
+        $app = $Router->chargeRouter($app, [
+            "app" => $app,
+            "container" => $container
+        ], $Init->getConfigFolder());
 
         // Process the application
         $response = $app->process($request, $response);

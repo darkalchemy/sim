@@ -11,8 +11,8 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 // Autoload de composer
-if (file_exists(dirname(__DIR__ ). '/vendor/autoload.php')) {
-    require dirname(__DIR__ ). '/vendor/autoload.php';
+if (file_exists(dirname(__DIR__). '/vendor/autoload.php')) {
+    require dirname(__DIR__). '/vendor/autoload.php';
 } else {
     die("Need to install dependencies with composer");
 }
@@ -43,7 +43,7 @@ if (getenv('ENV') == 'dev') {
     RunTracy\Helpers\Profiler\Profiler::enable();
 
     RunTracy\Helpers\Profiler\Profiler::start('loadSettings');
-    $c = require dirname(__DIR__ ). '/vendor/horyzone/sim-src/src/config/tracy.php';
+    $c = require dirname(__DIR__). '/vendor/horyzone/sim-src/src/config/tracy.php';
     RunTracy\Helpers\Profiler\Profiler::finish('loadSettings');
 
     RunTracy\Helpers\Profiler\Profiler::start('initApp');
@@ -52,7 +52,7 @@ if (getenv('ENV') == 'dev') {
 
     // Register dependencies
     RunTracy\Helpers\Profiler\Profiler::start('RegisterDependencies');
-    require dirname(__DIR__ ). '/config/container.php';
+    require dirname(__DIR__). '/config/container.php';
     RunTracy\Helpers\Profiler\Profiler::finish('RegisterDependencies');
 
     // Register middleware
@@ -71,7 +71,7 @@ if (getenv('ENV') == 'dev') {
     ], $Init->getConfigFolder());
     RunTracy\Helpers\Profiler\Profiler::finish('RegisterRoutes');
 
-    require dirname(__DIR__ ). '/config/error_pages.php';
+    require dirname(__DIR__). '/config/error_pages.php';
 
     // Run app
     RunTracy\Helpers\Profiler\Profiler::start('runApp, %s, line %s', basename(__FILE__), __LINE__);
@@ -79,19 +79,19 @@ if (getenv('ENV') == 'dev') {
     RunTracy\Helpers\Profiler\Profiler::finish('runApp, %s, line %s', basename(__FILE__), __LINE__);
 } else {
     $app = new \Slim\App([
-        'translations_path' => dirname(__DIR__ ). '/config/translations/'
+        'translations_path' => dirname(__DIR__). '/config/translations/'
     ]);
 
     // Le container qui compose nos librairies
-    require dirname(__DIR__ ). '/config/container.php';
+    require dirname(__DIR__). '/config/container.php';
 
     // Appel des middlewares
-    require dirname(__DIR__ ). '/config/middlewares.php';
+    require dirname(__DIR__). '/config/middlewares.php';
 
     // On déclare les routes
     $app = $Router->chargeRouter($app, $Init->getConfigFolder());
 
-    require dirname(__DIR__ ). '/config/error_pages.php';
+    require dirname(__DIR__). '/config/error_pages.php';
 
     // Execution de Slim
     $app->run();
