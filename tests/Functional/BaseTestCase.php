@@ -3,8 +3,6 @@
 namespace Tests\Functional;
 
 use \Horyzone\Sim\Init;
-use \Horyzone\Sim\Router;
-use \Horyzone\Sim\Middleware;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -37,16 +35,10 @@ class BaseTestCase extends TestCase
     public function runApp($requestMethod, $requestUri, $requestData = null)
     {
         // Create a mock environment for testing with
-        $environment = Environment::mock(
-            [
-                'REQUEST_METHOD' => $requestMethod,
-                'REQUEST_URI' => $requestUri
-            ]
-        );
-
-        $Init = new Init();
-        $Router = new Router();
-        $Middleware = new Middleware();
+        $environment = Environment::mock([
+            'REQUEST_METHOD' => $requestMethod,
+            'REQUEST_URI' => $requestUri
+        ]);
 
         // Set up a request object based on the environment
         $request = Request::createFromEnvironment($environment);
@@ -59,31 +51,9 @@ class BaseTestCase extends TestCase
         // Set up a response object
         $response = new Response();
 
-        // Use the application settings
-        $dotenv = new \Dotenv\Dotenv(__DIR__.'/../../');
-        $dotenv->load(true);
-
-        // Instantiate the application
-        $c = require dirname(__DIR__). '/../vendor/horyzone/sim-src/src/config/tracy.php';
-        $app = new App($c);
-
-        // Set up dependencies
-        require __DIR__ . '/../../config/container.php';
-
-        // Register middleware
-        if ($this->withMiddleware) {
-            $_SESSION = [];
-            $app = $Middleware->chargeMiddleware($app, [
-                "app" => $app,
-                "container" => $container
-            ], $Init->getConfigFolder());
-        }
-
-        // Register routes
-        $app = $Router->chargeRouter($app, [
-            "app" => $app,
-            "container" => $container
-        ], $Init->getConfigFolder());
+        $Init = new Init();
+        $Init->setLangDefault('en'); // Default language
+        $app = $Init->startApp(true);
 
         // Process the application
         $response = $app->process($request, $response);

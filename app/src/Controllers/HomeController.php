@@ -12,13 +12,17 @@ class HomeController extends Controller
         if (!$this->session->has('user')) {
             $this->session->set('user', 'John');
         }
-        $user = $this->session->get('user');
 
         // Passer en langue française (un second rafraichissement est necessaire)
         // $this->session->set('lang', 'fr');
 
         // Example doctrine
-        // $users = $this->em->getRepository('App\Entity\User')->queryGetUsers();
+        $users = $this->em->getRepository('App\Entity\User')->queryGetUsers();
+        if (!empty($users)) {
+            $user = $users[0]->getName();
+        } else {
+            $user = $this->session->get('user');
+        }
 
         // Example monolog
         $this->logger->addInfo("Bienvenue ".$user);
