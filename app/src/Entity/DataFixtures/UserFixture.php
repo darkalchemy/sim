@@ -13,7 +13,7 @@ class UserFixture extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setName('simon');
+        $user->setName('Simon');
         $user->setRank(
             $this->getReference('rank-admin')
         );

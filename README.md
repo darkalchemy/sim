@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/Version-1.0.0.beta02-brightgreen.svg)](https://github.com/Horyzone/sim/releases/tag/1.0.0.beta02)
+[![version](https://img.shields.io/badge/Version-1.0.0.beta03-brightgreen.svg)](https://github.com/Horyzone/sim/releases/tag/1.0.0.beta03)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1.3-8892BF.svg)](https://php.net/)
 [![Minimum Node Version](https://img.shields.io/badge/node-%3E%3D%206.11.5-brightgreen.svg)](https://nodejs.org/en/)
 [![Build Status](https://travis-ci.org/Horyzone/sim.svg?branch=master)](https://travis-ci.org/Horyzone/sim)
@@ -25,7 +25,7 @@ For all contributions on github, please read the document [CONTRIBUTING.md](http
 - [seldaek/monolog](https://github.com/Seldaek/monolog) to manage logs.
 - [runcmf/runtracy](https://github.com/runcmf/runtracy) for a profiler.
 - [adbario/slim-secure-session-middleware](https://github.com/adbario/slim-secure-session-middleware) helpers for session management.
-- [illuminate/translation](https://github.com/illuminate/translation) for the multilingual system.
+- [symfony/translation](https://github.com/symfony/translation) for the multilingual system.
 - [webpack/webpack](https://github.com/webpack/webpack) for compilation and minification of files css/js.
 
 

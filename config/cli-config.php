@@ -1,9 +1,13 @@
 <?php
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
-require 'vendor/autoload.php';
+// Autoload de composer
+if (file_exists(dirname(__DIR__).'/vendor/autoload.php')) {
+    require dirname(__DIR__).'/vendor/autoload.php';
+} else {
+    die("Need to install dependencies with composer");
+}
 
-$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
 $dotenv->load(true);
 
 if (getenv('ENV') == 'dev') {
@@ -23,9 +27,9 @@ $doctrine = [
 $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
     ['app/src/Entity'],
     true,
-    __DIR__.'/../cache/proxies',
+    dirname(__DIR__).'/app/cache/proxies',
     null,
     false
 );
 $em = \Doctrine\ORM\EntityManager::create($doctrine, $config);
-return ConsoleRunner::createHelperSet($em);
+return Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet($em);

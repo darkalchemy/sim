@@ -3,8 +3,8 @@
 {% block content %}
 
 <div id="logo"></div>
-<h1 id="titleExemple">{{ trans('messages.title') }}</h1>
-<p>{{ trans('messages.greet', {'name': user}) }}</p>
+<h1 id="titleExemple">{{ "title"|trans }}</h1>
+<p>{{ "greet"|trans({':name': user}) }}</p>
 
 <form action="{{ path_for('home_post')}}" method="post">
   <input type="submit" class="btn btn-primary" value="Test form with csrf">

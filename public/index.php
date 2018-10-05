@@ -18,4 +18,5 @@ if (file_exists(dirname(__DIR__). '/vendor/autoload.php')) {
 }
 
 $Init = new \Horyzone\Sim\Init();
+$Init->setLangDefault('fr'); // Default language
 $Init->startApp();
