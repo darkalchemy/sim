@@ -1,87 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__.'/vendor/autoload.php';
-use Symfony\Component\Console\Application;
-use PhpSchool\CliMenu\CliMenu;
-use PhpSchool\CliMenu\Builder\CliMenuBuilder;
+// Autoload de composer
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require __DIR__.'/vendor/autoload.php';
+} else {
+    die("Need to install dependencies with composer");
+}
 
 if (isset($argv[1])) {
-    $application = new Application('Console');
-
-    $CacheClearCommand = new \Horyzone\Commands\CacheClear();
-    $GenerateController = new \Horyzone\Commands\GenerateController();
-    $GenerateMiddleware = new \Horyzone\Commands\GenerateMiddleware();
-    $GenerateEntity = new \Horyzone\Commands\GenerateEntity();
-    $GenerateFixture = new \Horyzone\Commands\GenerateFixture();
-    $DataFixtures = new \Horyzone\Commands\DataFixtures();
-
-    $application->add($CacheClearCommand);
-    $application->add($GenerateController);
-    $application->add($GenerateMiddleware);
-    $application->add($GenerateEntity);
-    $application->add($GenerateFixture);
-    $application->add($DataFixtures);
-    $application->run();
+    (new \Horyzone\Sim\Init())->console($argv[1]);
 } else {
-    $menu = (new CliMenuBuilder)
-        ->setTitle('Slim-Doctrine Menu')
-        ->setExitButtonText("Quitter")
-        ->setUnselectedMarker(' ')
-        ->setSelectedMarker('>')
-        ->setBackgroundColour('black')
-        ->setForegroundColour('white')
-        ->addItem('Vider le cache', function (CliMenu $menu) {
-            $menu->close();
-            system('php '.__DIR__.'/console cache:clear');
-        })
-        ->addSubMenu('Générer un fichier', function (CliMenuBuilder $b) {
-            $b->setTitle('Slim-Doctrine Menu > Générer un fichier')
-                ->setExitButtonText("Quitter")
-                ->addItem('Générer un Controller', function (CliMenu $menu) {
-                    $menu->close();
-                    echo "Veuillez indiquer le nom du contrôleur : ";
-                    $handle = fopen("php://stdin", "r");
-                    $line = fgets($handle);
-                    system('php '.__DIR__.'/console generate:controller '.trim($line));
-                })
-                ->addItem('Générer un Middleware', function (CliMenu $menu) {
-                    $menu->close();
-                    echo "Veuillez indiquer le nom du middleware : ";
-                    $handle = fopen("php://stdin", "r");
-                    $line = fgets($handle);
-                    system('php '.__DIR__.'/console generate:middleware '.trim($line));
-                })
-                ->addItem('Générer une Entity', function (CliMenu $menu) {
-                    $menu->close();
-                    echo "Veuillez indiquer le nom de l'entité : ";
-                    $handle = fopen("php://stdin", "r");
-                    $line = fgets($handle);
-                    system('php '.__DIR__.'/console generate:entity '.trim($line));
-                })
-                ->addItem('Générer une Fixture', function (CliMenu $menu) {
-                    $menu->close();
-                    echo "Veuillez indiquer le nom de la fixture : ";
-                    $handle = fopen("php://stdin", "r");
-                    $line = fgets($handle);
-                    system('php '.__DIR__.'/console generate:fixture '.trim($line));
-                })
-                ->setGoBackButtonText("Retour");
-        })
-        ->addSubMenu('Doctrine', function (CliMenuBuilder $b) {
-            $b->setTitle('Slim-Doctrine Menu > Doctrine')
-              ->setExitButtonText("Quitter")
-              ->addItem('Mettre à jour les tables', function (CliMenu $menu) {
-                  $menu->close();
-                  system('php '.__DIR__.'/vendor/bin/doctrine orm:schema-tool:update --force');
-              })
-              ->addItem('Purger la base et initialiser les fixtures', function (CliMenu $menu) {
-                  $menu->close();
-                  system('php '.__DIR__.'/console data:fixtures');
-              })
-              ->setGoBackButtonText("Retour");
-        })
-        ->build();
-
-    $menu->open();
+    (new \Horyzone\Sim\Init())->console();
 }
