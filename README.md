@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/Version-1.0.0.beta03-brightgreen.svg)](https://github.com/Horyzone/sim/releases/tag/1.0.0.beta03)
+[![version](https://img.shields.io/badge/Version-1.0.0-rc.1-brightgreen.svg)](https://github.com/Horyzone/sim/releases/tag/1.0.0-rc.1)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1.3-8892BF.svg)](https://php.net/)
 [![Minimum Node Version](https://img.shields.io/badge/node-%3E%3D%206.11.5-brightgreen.svg)](https://nodejs.org/en/)
 [![Build Status](https://travis-ci.org/Horyzone/sim.svg?branch=master)](https://travis-ci.org/Horyzone/sim)
