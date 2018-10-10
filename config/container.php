@@ -21,15 +21,3 @@ $container['csrf'] = function () {
     });
     return $guard;
 };
-
-// Swiftmailer
-$container['mailer'] = function () {
-    if (getenv('SMTP_USER') != null && getenv('SMTP_PASSWORD') != null) {
-        $transport = (new Swift_SmtpTransport(getenv('SMTP_HOST'), getenv('SMTP_PORT')))
-            ->setUsername(getenv('SMTP_USER'))
-            ->setPassword(getenv('SMTP_PASSWORD'));
-    } else {
-        $transport = new Swift_SmtpTransport(getenv('SMTP_HOST'), getenv('SMTP_PORT'));
-    }
-    return new Swift_Mailer($transport);
-};
