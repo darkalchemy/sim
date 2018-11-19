@@ -10,3 +10,10 @@ home_post:
   path: /
   controller: App\Controllers\HomeController
   fonction: postHome
+
+# Example route with routerjs
+hello:
+  methode: get
+  path: /hello/{name}
+  controller: App\Controllers\HomeController
+  fonction: getHome

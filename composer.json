@@ -33,7 +33,7 @@
   },
   "require": {
     "php": ">=7.1.3",
-    "horyzone/sim-src": "^0.0.6",
+    "horyzone/sim-src": "^0.0.7",
     "respect/validation": "^1.1",
     "slim/csrf": "^0.8.3",
     "digitalnature/php-ref": "^1.2",
