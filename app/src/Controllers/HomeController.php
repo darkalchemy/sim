@@ -14,13 +14,13 @@ class HomeController extends Controller
         } else {
             // Exemple session helper
             if (!$this->session->has('user')) {
-              // Example doctrine
-              $users = $this->em->getRepository('App\Entity\User')->queryGetUsers();
-              if (!empty($users)) {
-                  $user = $users[0]->getName();
-              } else {
-                  $user = $this->session->get('user');
-              }
+                // Example doctrine
+                $users = $this->em->getRepository('App\Entity\User')->queryGetUsers();
+                if (!empty($users)) {
+                    $user = $users[0]->getName();
+                } else {
+                    $user = $this->session->get('user');
+                }
                 $this->session->set('user', 'John');
             }
         }
