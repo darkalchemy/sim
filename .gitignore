@@ -2,10 +2,10 @@
 composer.lock
 composer.phar
 vendor/*
-app/cache/*
-app/logs/*
+storage/cache/*
+storage/logs/*
 .env
-!app/cache/.gitkeep
-!app/logs/.gitkeep
+!storage/cache/.gitkeep
+!storage/logs/.gitkeep
 node_modules/*
 package-lock.json
