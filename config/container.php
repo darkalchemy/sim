@@ -4,7 +4,7 @@
 $container['logger'] = function ($container) {
     $settings = [
       'name' => 'sim-app',
-      'path' => dirname(__DIR__) . '/app/logs/app.log'
+      'path' => dirname(__DIR__) . '/storage/logs/app.log'
     ];
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
