@@ -23,7 +23,7 @@ install:
   - composer install
 
 before_script:
-  - chmod -R 777 storage
+  - chmod -R 777 storage && chmod +x .travis/setup.sh
   - .travis/setup.sh
   - php vendor/bin/doctrine orm:schema-tool:update --force
   - php console data:fixtures
