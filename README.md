@@ -26,7 +26,7 @@ For all contributions on github, please read the document [CONTRIBUTING.md](http
 - [runcmf/runtracy](https://github.com/runcmf/runtracy) for a profiler.
 - [adbario/slim-secure-session-middleware](https://github.com/adbario/slim-secure-session-middleware) helpers for session management.
 - [symfony/translation](https://github.com/symfony/translation) for the multilingual system.
-- [webpack/webpack](https://github.com/webpack/webpack) for compilation and minification of files css/js.
+- [webpack/webpack](https://github.com/webpack/webpack) for compilation and minification of files scss/sass/css/js.
 - [llvdl/slim-router-js](https://github.com/llvdl/slim-router-js) url generator slim in javascript code.
 
 
