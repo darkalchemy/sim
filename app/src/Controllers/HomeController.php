@@ -19,9 +19,11 @@ class HomeController extends Controller
                 if (!empty($users)) {
                     $user = $users[0]->getName();
                 } else {
-                    $user = $this->session->get('user');
+                    $user = "John";
                 }
-                $this->session->set('user', 'John');
+                $this->session->set('user', $user);
+            } else {
+                $user = $this->session->get('user');
             }
         }
 
@@ -29,7 +31,9 @@ class HomeController extends Controller
         // $this->session->set('lang', 'fr');
 
         // Example monolog
-        $this->logger->addInfo("Bienvenue ".$user);
+        if (isset($user)) {
+            $this->logger->addInfo("Bienvenue ".$user);
+        }
 
         // Example alerte
         if ($this->session->has('lang') && $this->session->get('lang') == "fr") {
