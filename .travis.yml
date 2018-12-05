@@ -22,6 +22,7 @@ install:
   - composer install
 
 before_script:
+  - echo $DB
   - chmod -R 770 storage/logs && chmod -R 770 storage/cache
   - sh -c "mysql -e 'CREATE DATABASE sim_prod;'"
   - cp .env.travis .env
