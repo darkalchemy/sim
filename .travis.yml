@@ -13,6 +13,7 @@ matrix:
       env: DB=postgresql
     - php: 7.2
       node_js: 9
+      env: DB=sqlite3
     - php: 7.2
       node_js: 10
     - php: 7.3
