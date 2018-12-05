@@ -10,8 +10,10 @@ matrix:
       env: DB=mysql
     - php: 7.2
       node_js: 8
+      env: DB=postgresql
     - php: 7.2
       node_js: 9
+      env: DB=sqlite3
     - php: 7.2
       node_js: 10
     - php: 7.3
@@ -22,9 +24,8 @@ install:
   - composer install
 
 before_script:
-  - chmod -R 770 storage/logs && chmod -R 770 storage/cache
-  - sh -c "mysql -e 'CREATE DATABASE sim_prod;'"
-  - cp .env.travis .env
+  - chmod -R 777 storage && chmod +x .travis/setup.sh
+  - .travis/setup.sh
   - php vendor/bin/doctrine orm:schema-tool:update --force
   - php console data:fixtures
   - npm install
