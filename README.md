@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/Version-1.0.0--rc.4-brightgreen.svg)](https://github.com/Horyzone/sim/releases/tag/1.0.0-rc.4)
+[![version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)](https://github.com/Horyzone/sim/releases/tag/1.0.0)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1.3-8892BF.svg)](https://php.net/)
 [![Minimum Node Version](https://img.shields.io/badge/node-%3E%3D%206.11.5-brightgreen.svg)](https://nodejs.org/en/)
 [![Build Status](https://travis-ci.org/Horyzone/sim.svg?branch=master)](https://travis-ci.org/Horyzone/sim)
@@ -21,7 +21,6 @@ For all contributions on github, please read the document [CONTRIBUTING.md](http
 - [digitalnature/php-ref](https://github.com/digitalnature/php-ref) for an improved var_dump function.
 - [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) for the configuration of the environment.
 - [symfony/console](https://github.com/symfony/console) for console commands.
-- [php-school/cli-menu](https://github.com/php-school/cli-menu) for a command execution interface.
 - [seldaek/monolog](https://github.com/Seldaek/monolog) to manage logs.
 - [runcmf/runtracy](https://github.com/runcmf/runtracy) for a profiler.
 - [adbario/slim-secure-session-middleware](https://github.com/adbario/slim-secure-session-middleware) helpers for session management.
@@ -47,9 +46,9 @@ Do not forget to check that your environment configuration of your database matc
 
 ## Permissions
 
-Allow the `app / cache` and` app / logs` folders to write to the web server side.
+Allow the `app/cache` and `app/logs` folders to write to the web server side.
 
 
-# User Documentation
+## Documentation
 
-Work in progress...
+Check the [User Documentation](https://docs.horyzone.fr/sim/)
